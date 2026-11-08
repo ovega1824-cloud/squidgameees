@@ -36,8 +36,8 @@ public class ClientFinalEvents {
         float bodyYaw = Mth.rotLerp(pt, p.yBodyRotO, p.yBodyRot);
         float headYaw = Mth.wrapDegrees(Mth.rotLerp(pt, p.yHeadRotO, p.yHeadRot) - bodyYaw);
         float headPitch = Mth.lerp(pt, p.xRotO, p.getXRot());
-        float limbAmount = Math.min(1.0F, Mth.lerp(pt, p.animationSpeedOld, p.animationSpeed));
-        float limbSwing = p.animationPosition - p.animationSpeed * (1.0F - pt);
+          float limbAmount = Math.min(1.0F, p.walkAnimation.speed(pt));
+   float limbSwing = p.walkAnimation.position(pt);
         float down = ClientFinal.downAmount(p.getUUID(), pt);
         ResourceLocation skin = p instanceof AbstractClientPlayer acp
                 ? acp.getSkinTextureLocation()
